@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  
   def index
     @tasks = Task.all
   end
@@ -47,11 +48,12 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
   
+  
 end
 
   private
 
   # Strong Parameter
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :title)
   end
