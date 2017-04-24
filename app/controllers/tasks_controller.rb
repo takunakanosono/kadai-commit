@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
       flash[:success] = 'タスクが正常に投稿されました'
@@ -55,5 +55,5 @@ end
 
   # Strong Parameter
   def task_params
-    params.require(:task).permit(:content, :title, :status)
+    params.require(:task).permit(:content, :status)
   end
